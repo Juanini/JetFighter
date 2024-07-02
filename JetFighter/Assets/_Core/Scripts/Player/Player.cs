@@ -30,4 +30,14 @@ public class Player : MonoBehaviour
     {
         return shipSO.shipSprite;
     }
+
+    public float GetCurrentHealth()
+    {
+        return 0;
+    }
+
+    public float GetBoostAmount()
+    {
+        return 0;
+    }
 }

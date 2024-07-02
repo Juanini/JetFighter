@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPrefab: {fileID: 255633289839915350, guid: d728edc7b66134d6d9cac68ec5ef0598, type: 3}
   shipSprite: {fileID: 21300000, guid: 64bfed3fd031c4dc38bb8cc6462734fc, type: 3}
+  movementConfig: {fileID: 11400000, guid: 598747b2142d44785bb21e1efd441452, type: 2}
