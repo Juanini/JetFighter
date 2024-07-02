@@ -7,22 +7,25 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     
     // 
-    private ScreenLooper screenWrapper;
+    
+    private ScreenLooper screenLooper;
     
     // BOOST
+
+    public PlayerBoost playerBoost;
     
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentSpeed = movementConfig.forwardSpeed;
-        screenWrapper = FindObjectOfType<ScreenLooper>();
+        screenLooper = FindObjectOfType<ScreenLooper>();
     }
 
     void Update()
     {
         HandleMovement();
-        screenWrapper.WrapObject(transform);
+        screenLooper.WrapObject(transform);
     }
 
     void HandleMovement()
@@ -34,16 +37,25 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             transform.Rotate(Vector3.forward, movementConfig.turnSpeed * Time.deltaTime);
-            currentSpeed = movementConfig.forwardSpeed * movementConfig.slowDownFactor;
+            currentSpeed = GetCurrentSpeed() * movementConfig.slowDownFactor;
         }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             transform.Rotate(Vector3.forward, -movementConfig.turnSpeed * Time.deltaTime);
-            currentSpeed = movementConfig.forwardSpeed * movementConfig.slowDownFactor;
+            currentSpeed = GetCurrentSpeed() * movementConfig.slowDownFactor;
         }
         else
         {
-            currentSpeed = Mathf.Lerp(currentSpeed, movementConfig.forwardSpeed, Time.deltaTime * movementConfig.recoverySpeed);
+            // currentSpeed = Mathf.Lerp(currentSpeed, GetCurrentSpeed(), Time.deltaTime * movementConfig.recoverySpeed);
+            currentSpeed = GetCurrentSpeed();
         }
     }
+
+    public float GetCurrentSpeed()
+    {
+        return playerBoost.IsBoosting()
+            ? movementConfig.forwardSpeed * playerBoost.boostMultiplier
+            : movementConfig.forwardSpeed; ;
+    }
+        
 }

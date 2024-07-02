@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerMovementNormal
   m_EditorClassIdentifier: 
   forwardSpeed: 5
-  turnSpeed: 10
+  turnSpeed: 100
   slowDownFactor: 0.7
   recoverySpeed: 1
