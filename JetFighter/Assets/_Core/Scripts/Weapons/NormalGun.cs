@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class NormalGun : Weapon
 {
-    public Player player;
-    
     public override void Shoot()
     {
         var p = GetProjectileFromPool();

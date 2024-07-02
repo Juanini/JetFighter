@@ -10,6 +10,8 @@ public abstract class Weapon : MonoBehaviour
 
     private ObjectPool<Projectile> projectilePool;
 
+    protected Player player;
+
     private void Awake()
     {
         projectilePool = new ObjectPool<Projectile>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject);
@@ -29,6 +31,11 @@ public abstract class Weapon : MonoBehaviour
         canShoot = false;
         await UniTask.Delay(fireRate);
         canShoot = true; 
+    }
+
+    public void SetOwner(Player _playerOwner)
+    {
+        player = _playerOwner;
     }
     
     // * =====================================================================================================================================
