@@ -6,10 +6,6 @@ public class PlayerMovement : MonoBehaviour
     private float currentSpeed;
     private Rigidbody2D rb;
     
-    // 
-    
-    private ScreenLooper screenLooper;
-    
     // BOOST
 
     public PlayerBoost playerBoost;
@@ -19,13 +15,11 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         currentSpeed = movementConfig.forwardSpeed;
-        screenLooper = FindObjectOfType<ScreenLooper>();
     }
 
     void Update()
     {
         HandleMovement();
-        screenLooper.WrapObject(transform);
     }
 
     void HandleMovement()

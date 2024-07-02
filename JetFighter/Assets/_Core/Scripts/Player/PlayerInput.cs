@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    private Player player;
+    
     private PlayerMovement planeMovement;
     private PlayerBoost playerBoost;
-    private Attack attack;
 
     void Start()
     {
+        player = GetComponent<Player>();
+        
         planeMovement = GetComponent<PlayerMovement>();
         playerBoost = GetComponent<PlayerBoost>();
-        attack = GetComponent<Attack>();
 
         turnLeftKey = KeyCode.LeftArrow;
     }
@@ -54,11 +56,11 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            attack.Shoot();
+            player.activeWeapon.TryShoot();
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
-        {
-            attack.StopShooting();
-        }
+        // else if (Input.GetKeyUp(KeyCode.Space))
+        // {
+        //     
+        // }
     }
 }
