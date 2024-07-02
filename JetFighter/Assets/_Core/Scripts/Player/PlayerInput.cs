@@ -9,6 +9,8 @@ public class PlayerInput : MonoBehaviour
     private PlayerMovement planeMovement;
     private PlayerBoost playerBoost;
 
+    [SerializeField] private ControllerConfigSO controllerConfigSo;
+    
     void Start()
     {
         player = GetComponent<Player>();
@@ -30,11 +32,11 @@ public class PlayerInput : MonoBehaviour
 
     void HandleMovementInput()
     {
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        if (Input.GetKey(controllerConfigSo.left))
         {
             planeMovement.TurnLeft();
         }
-        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(controllerConfigSo.right))
         {
             planeMovement.TurnRight();
         }
@@ -46,7 +48,7 @@ public class PlayerInput : MonoBehaviour
 
     void HandleBoostInput()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(controllerConfigSo.boost))
         {
             playerBoost.PerformBoost().Forget();
         }
@@ -54,7 +56,7 @@ public class PlayerInput : MonoBehaviour
 
     void HandleAttackInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(controllerConfigSo.shoot))
         {
             player.activeWeapon.TryShoot();
         }

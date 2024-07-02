@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private List<PlayerVariable> playersList;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public LevelSO levelPVE;
+    public LevelSO levelPVP;
+    
+    
 }

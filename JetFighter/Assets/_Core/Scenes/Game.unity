@@ -804,6 +804,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f025ffaa33ccc4df79501d9360bf7c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playersList:
+  - {fileID: 11400000, guid: 66ef0f13421f840148e3e0eaa99c9261, type: 2}
+  - {fileID: 11400000, guid: a8c50dcf7b5cd4f29be0e5a412a869dd, type: 2}
+  levelPVE: {fileID: 11400000, guid: 96bc6d62e9a7a49b99fad9380e7d7403, type: 2}
+  levelPVP: {fileID: 11400000, guid: f3562678e26004d9994de556baa29ce2, type: 2}
 --- !u!4 &1693102738
 Transform:
   m_ObjectHideFlags: 0
@@ -1040,6 +1045,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ship
       objectReference: {fileID: 0}
+    - target: {fileID: 3909596165016378179, guid: d728edc7b66134d6d9cac68ec5ef0598, type: 3}
+      propertyPath: controllerConfigSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 969b119751002494ebd19fa785fbe8c2, type: 2}
     - target: {fileID: 7050532924967355020, guid: d728edc7b66134d6d9cac68ec5ef0598, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
