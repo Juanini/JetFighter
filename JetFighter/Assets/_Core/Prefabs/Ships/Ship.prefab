@@ -53,6 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb34d33e930b44bdbdec8581f6e888d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeWeapon: {fileID: 0}
+  shootPos: {fileID: 1475319460727890654}
 --- !u!114 &5397490889030775535
 MonoBehaviour:
   m_ObjectHideFlags: 0
