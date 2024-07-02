@@ -1,10 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ScreenLooper : MonoBehaviour
 {
-    public void WrapObject(Transform objTransform)
+    private void Update()
+    {
+        WrapObject(transform);
+    }
+
+    private void WrapObject(Transform objTransform)
     {
         Vector3 newPosition = objTransform.position;
     
