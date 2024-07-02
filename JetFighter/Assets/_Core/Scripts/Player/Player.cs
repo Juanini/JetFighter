@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] public Weapon activeWeapon;
     [SerializeField] public Transform shootPos;
 
+    [SerializeField] private ShipSO shipSO;
+
     private void Start()
     {
         Init();
@@ -22,5 +24,10 @@ public class Player : MonoBehaviour
     {
         activeWeapon = WeaponsManager.Ins.GetStartingWeapon();
         activeWeapon.SetOwner(this);
+    }
+
+    public Sprite GetShipSprite()
+    {
+        return shipSO.shipSprite;
     }
 }

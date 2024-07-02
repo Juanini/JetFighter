@@ -8,6 +8,4 @@ public class LevelManager : MonoBehaviour
 
     public LevelSO levelPVE;
     public LevelSO levelPVP;
-    
-    
 }
