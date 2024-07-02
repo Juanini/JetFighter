@@ -19,10 +19,10 @@ public class PlayerBoost : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isBoosting)
-        {
-            PerformBoost().Forget();
-        }
+        // if (Input.GetKeyDown(KeyCode.Space) && !isBoosting)
+        // {
+        //     PerformBoost().Forget();
+        // }
         
         // Regenerate the boost bar over time
         if (boostBar < 1f)
@@ -32,7 +32,7 @@ public class PlayerBoost : MonoBehaviour
         }
     }
 
-    private async UniTaskVoid PerformBoost()
+    public async UniTaskVoid PerformBoost()
     {
         isBoosting = true;
         await UniTask.Delay((int)(boostDuration * 1000));

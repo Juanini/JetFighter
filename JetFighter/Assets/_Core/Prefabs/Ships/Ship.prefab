@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7423849626528675025}
   - component: {fileID: 5397490889030775535}
   - component: {fileID: 766788591462688878}
+  - component: {fileID: 3909596165016378179}
   - component: {fileID: 2215398371120438510}
   - component: {fileID: 5000845743328154044}
   m_Layer: 0
@@ -51,6 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb34d33e930b44bdbdec8581f6e888d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeWeapon: {fileID: 0}
+  shootPos: {fileID: 1475319460727890654}
 --- !u!114 &5397490889030775535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,9 +81,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementConfig: {fileID: 11400000, guid: 598747b2142d44785bb21e1efd441452, type: 2}
-  boostMultiplier: 10
+  boostMultiplier: 3
   boostDuration: 0.2
   boostCooldown: 5
+--- !u!114 &3909596165016378179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255633289839915350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df282a9e2365a4a6c88e038b1e845bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2215398371120438510
 MonoBehaviour:
   m_ObjectHideFlags: 0
