@@ -2,10 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField] private List<PlayerVariable> playersList;
 
-    public LevelSO levelPVE;
-    public LevelSO levelPVP;
+    public ScriptableListPlayerInfoUI scriptableListPlayerInfoUI;
+    
+    public void CreatePlayers()
+    {
+        for (var i = 0; i < playersList.Count; i++)
+        {
+            var gameMode = GameManager.Ins.GetGameModeActive();
+            
+            var player = Instantiate(gameMode.playersTypesList[i].playerPrefab).GetComponent<Player>();
+            
+            playersList[i].CleanUp();
+            playersList[i].Value = player;
+            player.transform.position = PositionReferences.Ins.playersPositions[i].position;
+            
+            scriptableListPlayerInfoUI[i].Init(playersList[i]);
+        }
+    }
 }

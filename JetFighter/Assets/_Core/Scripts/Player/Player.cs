@@ -10,6 +10,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private ShipSO shipSO;
 
+    public GameObject uiPos;
+
+    private float health;
+
     private void Start()
     {
         Init();
@@ -17,6 +21,7 @@ public class Player : MonoBehaviour
 
     private void Init()
     {
+        health = shipSO.maxHealth;
         SetInitialWeapon();
     }
 
@@ -33,7 +38,7 @@ public class Player : MonoBehaviour
 
     public float GetCurrentHealth()
     {
-        return 0;
+        return health;
     }
 
     public float GetBoostAmount()

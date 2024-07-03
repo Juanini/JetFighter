@@ -4,12 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class FadePanel : MonoBehaviour
+public class FadePanel : Singleton<FadePanel>
 {
-    public static FadePanel Ins;
-
     public Image panel;
-    void Awake() => Ins = this;
 
     private UnityAction fadeItCallback, fadeOutCallback;
     

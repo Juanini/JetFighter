@@ -54,6 +54,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeWeapon: {fileID: 0}
   shootPos: {fileID: 1475319460727890654}
+  shipSO: {fileID: 11400000, guid: 882d6bc8e3d784aaca18c18faf8c9eb2, type: 2}
+  uiPos: {fileID: 5192862984212117851}
 --- !u!114 &5397490889030775535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df282a9e2365a4a6c88e038b1e845bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controllerConfigSo: {fileID: 11400000, guid: bbf47c605556648b8a1738c53e2d8235, type: 2}
 --- !u!114 &2215398371120438510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +194,7 @@ Transform:
   m_GameObject: {fileID: 5192862984212117851}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.574, y: 0.422, z: 0}
+  m_LocalPosition: {x: 1.099, y: 0.824, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

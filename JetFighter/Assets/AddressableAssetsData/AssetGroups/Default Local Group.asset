@@ -23,6 +23,36 @@ MonoBehaviour:
     m_SerializedLabels:
     - Game
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37c2fbe24632d4dd2889331a42cb40ea
+    m_Address: Assets/_Core/Prefabs/UI/Views/MainMenuView.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Game
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f20f89e200c6947c7bd15a9f4e4c9514
+    m_Address: Assets/_Core/Prefabs/UI/Views/ModeSelectView.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Game
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b4721085d076f48599bce2100eb02c03
+    m_Address: Assets/_Core/Prefabs/UI/Views/ShipSelectView.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Game
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2c15e328f39c451f881abeacde0bd02
+    m_Address: Assets/_Core/Prefabs/UI/Views/PauseView.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Game
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 08e30d56ea5ca45e5b13c9f9d695d8b6
+    m_Address: Assets/_Core/Prefabs/UI/Views/ResultView.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Game
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b786c86d8a121478d8c65b54d7b82cc9, type: 2}
   m_SchemaSet:

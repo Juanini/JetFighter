@@ -5,5 +5,15 @@ using Obvious.Soap;
 public class PlayerVariable : ScriptableVariable<Player>
 {
     private int playerNumber;
+    private PlayerInfoUI infoUI;
+    private PlayerScoreUI scoreUI;
+
+    public void CleanUp()
+    {
+        if (Value != null) 
+        {
+            Destroy(Value);
+        }
+    }
 }
 

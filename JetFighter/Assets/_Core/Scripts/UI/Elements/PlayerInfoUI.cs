@@ -11,10 +11,12 @@ public class PlayerInfoUI : MonoBehaviour
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI boostText;
 
+    public ScriptableListPlayerInfoUI scriptableListPlayerInfoUI;
+
     private bool isInitialized;
     void Start()
     {
-        
+        scriptableListPlayerInfoUI.Add(this);
     }
     
     public void Init(PlayerVariable _playerVariable)
@@ -27,7 +29,25 @@ public class PlayerInfoUI : MonoBehaviour
     {
         if (!isInitialized) { return; }
         
-        healthText.text = playerVariable.Value.GetCurrentHealth().ToString();
-        healthText.text = playerVariable.Value.GetBoostAmount().ToString();
+        healthText.text = "HEALTH: " + playerVariable.Value.GetCurrentHealth().ToString();
+        boostText.text = "BOOST: " + playerVariable.Value.GetBoostAmount().ToString();
+    }
+
+    private void LateUpdate()
+    {
+        if (!isInitialized) { return; }
+        FollowUIPosition();
+    }
+
+    private void FollowUIPosition()
+    {
+        if (playerVariable.Value.uiPos != null)
+        {
+            Vector3 uiPosition = playerVariable.Value.uiPos.transform.position;
+            transform.position = uiPosition;
+            
+            // Reset rotation to avoid rotating with the target object
+            transform.rotation = Quaternion.identity;
+        }
     }
 }

@@ -324,6 +324,7 @@ MonoBehaviour:
   playerVariable: {fileID: 0}
   healthText: {fileID: 8005656362972138729}
   boostText: {fileID: 174949247828180118}
+  scriptableListPlayerInfoUI: {fileID: 11400000, guid: 68b115b671c054c0aa49c74749fe5ae5, type: 2}
 --- !u!222 &2875667744355403356
 CanvasRenderer:
   m_ObjectHideFlags: 0

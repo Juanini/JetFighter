@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShipScoreUI : MonoBehaviour
+public class PlayerScoreUI : MonoBehaviour
 {
     [SerializeField] private PlayerVariable playerVariable;
     [SerializeField] private Image shipImage;
