@@ -16,6 +16,8 @@ public class LevelManager : Singleton<LevelManager>
             
             var player = Instantiate(gameMode.playersTypesList[i].playerPrefab).GetComponent<Player>();
             
+            player.Setup(i);
+                
             playersList[i].CleanUp();
             playersList[i].Value = player;
             player.transform.position = PositionReferences.Ins.playersPositions[i].position;

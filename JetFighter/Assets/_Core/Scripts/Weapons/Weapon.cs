@@ -38,6 +38,11 @@ public abstract class Weapon : MonoBehaviour
         player = _playerOwner;
     }
     
+    public int GetOwnerPlayerNumber()
+    {
+        return player.PlayerNumber;
+    }
+    
     // * =====================================================================================================================================
     // * 
 

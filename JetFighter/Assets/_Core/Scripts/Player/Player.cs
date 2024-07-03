@@ -12,11 +12,22 @@ public class Player : MonoBehaviour
 
     public GameObject uiPos;
 
+    [Header("COMPONENTS")] [SerializeField]
+    private PlayerInput playerInput;
+
     private float health;
+    private int playerNumber;
+    public int PlayerNumber => playerNumber;
 
     private void Start()
     {
         Init();
+    }
+
+    public void Setup(int _playerNumber)
+    {
+        playerNumber = _playerNumber;
+        playerInput.Setup(this);
     }
 
     private void Init()
@@ -44,5 +55,27 @@ public class Player : MonoBehaviour
     public float GetBoostAmount()
     {
         return 0;
+    }
+
+    private void OnTriggerEnter2D(Collider2D _other)
+    {
+        if (_other.CompareTag("Projectile"))
+        {
+            var projectile = _other.GetComponent<Projectile>();
+            if (projectile.GetOwnerNumber() == playerNumber)
+            {
+                return;
+            }
+            
+            Damage();
+        }
+    }
+
+    // * =====================================================================================================================================
+    // * 
+    
+    private void Damage()
+    {
+        health -= 10;
     }
 }

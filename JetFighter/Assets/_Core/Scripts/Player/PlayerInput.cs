@@ -10,6 +10,7 @@ public class PlayerInput : MonoBehaviour
     private PlayerBoost playerBoost;
 
     [SerializeField] private ControllerConfigSO controllerConfigSo;
+    [SerializeField] private List<ControllerConfigSO> controllerConfigSoList;
     
     void Start()
     {
@@ -64,5 +65,11 @@ public class PlayerInput : MonoBehaviour
         // {
         //     
         // }
+    }
+
+    public void Setup(Player _player)
+    {
+        player = _player;
+        controllerConfigSo = controllerConfigSoList[player.PlayerNumber];
     }
 }
