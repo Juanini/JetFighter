@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
         Init();
     }
 
-    private void Init()
+    private async void Init()
     {
-        
+        await UI.Ins.Init();
     }
 }

@@ -41,3 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 296836795
+    locked: 0
+  - name: Foreground
+    uniqueID: 3425403017
+    locked: 0
+  - name: Player
+    uniqueID: 2668468933
+    locked: 0
+  - name: Projectile
+    uniqueID: 940623171
+    locked: 0
+  - name: VFX
+    uniqueID: 3859653193
+    locked: 0
+  - name: UI
+    uniqueID: 1451730569
+    locked: 0
