@@ -9,17 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7254a3f2acae943d888f6c574ceb6563, type: 3}
-  m_Name: Player2
+  m_Script: {fileID: 11500000, guid: 57c8b926b0bb04879ac93c5c4008dad3, type: 3}
+  m_Name: PlayerScoreUIList
   m_EditorClassIdentifier: 
   TagIndex: 0
   Description: 
-  _guid: a8c50dcf7b5cd4f29be0e5a412a869dd
-  _saveGuid: 0
-  _value: {fileID: 0}
-  _debugLogEnabled: 0
-  _saved: 0
-  _defaultValue: {fileID: 0}
   _resetOn: 0
-  infoUI: {fileID: 0}
-  scoreUI: {fileID: 0}
+  _list: []

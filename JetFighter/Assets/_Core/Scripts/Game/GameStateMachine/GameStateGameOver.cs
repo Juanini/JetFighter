@@ -5,6 +5,7 @@ public class GameStateGameOver : StateBase<GameStates>
 {
     public override async UniTask EnterState()
     {
+        GameManager.Ins.onMatchEnd.Raise();
         UI.ShowPopup<GameOverView>();
     }
 

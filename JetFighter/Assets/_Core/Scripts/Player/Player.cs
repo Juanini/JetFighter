@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     [Header("COMPONENTS")]
     [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private PlayerBoost playerBoost;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private ScreenLooper screenLooper;
 
@@ -27,13 +28,23 @@ public class Player : MonoBehaviour
     private int playerNumber;
     public int PlayerNumber => playerNumber;
 
+    private PlayerVariable playerVariable;
+    private int score;
+    public int Score
+    {
+        get => score;
+        set => score = value;
+    }
+
     private void Start()
     {
         Init();
     }
 
-    public void Setup(int _playerNumber)
+    public void Setup(int _playerNumber, PlayerVariable _playerVariable)
     {
+        playerVariable = _playerVariable;
+        
         playerNumber = _playerNumber;
         playerInput.Setup(this);
     }
@@ -70,6 +81,7 @@ public class Player : MonoBehaviour
     {
         transform.position = PositionReferences.Ins.playersExitPositions[playerNumber].position;
         
+        playerBoost.Init();
         playerMovement.SetMovingState(false);
         playerMovement.Stop();
         
@@ -89,9 +101,9 @@ public class Player : MonoBehaviour
         return health;
     }
 
-    public float GetBoostAmount()
+    public int GetBoostAmount()
     {
-        return 0;
+        return (int)playerBoost.GetBoostBar();
     }
 
     private void OnTriggerEnter2D(Collider2D _other)
@@ -112,6 +124,11 @@ public class Player : MonoBehaviour
     // * =====================================================================================================================================
     // * 
 
+    public void SetAsWinner()
+    {
+        
+    }
+    
     public void SetRotation(float _valuer)
     {
         transform.Rotate(new Vector3(0, 0, _valuer));

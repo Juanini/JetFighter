@@ -14,6 +14,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("EVENTS")] 
     public ScriptableEventNoParam onRematch;
+    public ScriptableEventNoParam onMatchEnd;
     public ScriptableEventNoParam onMatchStart;
     
     private void Start()

@@ -20,4 +20,6 @@ MonoBehaviour:
   _debugLogEnabled: 0
   _saved: 0
   _defaultValue: {fileID: 0}
-  _resetOn: 0
+  _resetOn: 1
+  infoUI: {fileID: 0}
+  scoreUI: {fileID: 0}

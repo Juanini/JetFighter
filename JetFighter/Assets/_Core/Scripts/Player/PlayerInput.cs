@@ -18,11 +18,7 @@ public class PlayerInput : MonoBehaviour
         
         planeMovement = GetComponent<PlayerMovement>();
         playerBoost = GetComponent<PlayerBoost>();
-
-        turnLeftKey = KeyCode.LeftArrow;
     }
-
-    private KeyCode turnLeftKey;
 
     void Update()
     {
@@ -61,10 +57,6 @@ public class PlayerInput : MonoBehaviour
         {
             player.activeWeapon.TryShoot();
         }
-        // else if (Input.GetKeyUp(KeyCode.Space))
-        // {
-        //     
-        // }
     }
 
     public void Setup(Player _player)

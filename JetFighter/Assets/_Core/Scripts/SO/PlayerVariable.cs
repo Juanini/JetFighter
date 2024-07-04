@@ -1,17 +1,18 @@
 using UnityEngine;
 using Obvious.Soap;
+using Unity.VisualScripting;
 
 [CreateAssetMenu(fileName = "scriptable_variable_" + nameof(Player), menuName = "Soap/ScriptableVariables/"+ nameof(Player))]
 public class PlayerVariable : ScriptableVariable<Player>
 {
-    private int playerNumber;
-    private PlayerInfoUI infoUI;
-    private PlayerScoreUI scoreUI;
+    public PlayerInfoUI infoUI;
+    public PlayerScoreUI scoreUI;
 
     public void CleanUp()
     {
-        if (Value != null) 
+        if (Value != null)
         {
+            Value.Score = 0;
             Destroy(Value.gameObject);
         }
     }
@@ -19,6 +20,12 @@ public class PlayerVariable : ScriptableVariable<Player>
     public bool IsDead()
     {
         return Value.Health <= 0;
+    }
+
+    public void OnWinMatch()
+    {
+        Value.Score++;
+        scoreUI.SetScore(Value.Score);
     }
 }
 

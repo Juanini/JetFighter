@@ -59,6 +59,7 @@ MonoBehaviour:
   shipSO: {fileID: 11400000, guid: 882d6bc8e3d784aaca18c18faf8c9eb2, type: 2}
   uiPos: {fileID: 5192862984212117851}
   playerMovement: {fileID: 5397490889030775535}
+  playerBoost: {fileID: 766788591462688878}
   playerInput: {fileID: 3909596165016378179}
   screenLooper: {fileID: 2215398371120438510}
   onShipDestoyed: {fileID: 11400000, guid: c69b42b061b164ab88ea1c97260231aa, type: 2}
@@ -89,8 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementConfig: {fileID: 11400000, guid: 598747b2142d44785bb21e1efd441452, type: 2}
-  boostMultiplier: 3
-  boostDuration: 0.2
+  boostMultiplier: 4
+  boostDuration: 0.4
   boostCooldown: 5
 --- !u!114 &3909596165016378179
 MonoBehaviour:
@@ -209,7 +210,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.58880687, y: 0.7149942}
   m_EdgeRadius: 0
 --- !u!1 &1729291796081012934
 GameObject:
