@@ -28,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
         canMove = _state;
     }
 
+    public void Stop()
+    {
+        rb.velocity = Vector3.zero;
+    }
+
     void HandleMovement()
     {
         rb.velocity = transform.up * currentSpeed;

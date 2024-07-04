@@ -547,7 +547,7 @@ MonoBehaviour:
   gameStateMachine: {fileID: 789073940}
   onGameModeSelected: {fileID: 11400000, guid: b5d21dffd51d54a21854dc18fbcc29b3, type: 2}
   onRematch: {fileID: 11400000, guid: e254956a3c07040a3848efe6eb89b433, type: 2}
-  onMatchStart: {fileID: 0}
+  onMatchStart: {fileID: 11400000, guid: ec56934fa8ff845f680889c04a562a2f, type: 2}
 --- !u!1 &995105915
 GameObject:
   m_ObjectHideFlags: 0

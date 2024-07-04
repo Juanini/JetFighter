@@ -40,8 +40,13 @@ public class Player : MonoBehaviour
 
     private void Init()
     {
-        health = shipSO.maxHealth;
+        SetHealthToMax();
         SetInitialWeapon();
+    }
+    
+    private void SetHealthToMax()
+    {
+        health = shipSO.maxHealth;
     }
 
     private void SetInitialWeapon()
@@ -54,6 +59,17 @@ public class Player : MonoBehaviour
     {
         playerMovement.SetMovingState(true);
         SetScreenLooperActive(true);
+    }
+    
+    public void PrepareForNextMatch()
+    {
+        transform.position = PositionReferences.Ins.playersExitPositions[playerNumber].position;
+        
+        playerMovement.SetMovingState(false);
+        playerMovement.Stop();
+        
+        SetScreenLooperActive(false);
+        SetHealthToMax();
     }
 
     public Sprite GetShipSprite()

@@ -71,6 +71,14 @@ public class LevelManager : Singleton<LevelManager>
             playerVariable.Value.SetReadyForMatch();
         }
     }
+    
+    public void ResetShips()
+    {
+        foreach (var playerVariable in playersList)
+        {
+            playerVariable.Value.PrepareForNextMatch();
+        }
+    }
 
     // * =====================================================================================================================================
     // * EVENTS
