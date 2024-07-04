@@ -12,7 +12,7 @@ public class PlayerVariable : ScriptableVariable<Player>
     {
         if (Value != null) 
         {
-            Destroy(Value);
+            Destroy(Value.gameObject);
         }
     }
 

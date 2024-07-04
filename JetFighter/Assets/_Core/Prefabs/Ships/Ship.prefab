@@ -57,7 +57,9 @@ MonoBehaviour:
   shootPos: {fileID: 1475319460727890654}
   shipSO: {fileID: 11400000, guid: 882d6bc8e3d784aaca18c18faf8c9eb2, type: 2}
   uiPos: {fileID: 5192862984212117851}
+  playerMovement: {fileID: 5397490889030775535}
   playerInput: {fileID: 3909596165016378179}
+  screenLooper: {fileID: 2215398371120438510}
   onShipDestoyed: {fileID: 11400000, guid: c69b42b061b164ab88ea1c97260231aa, type: 2}
 --- !u!114 &5397490889030775535
 MonoBehaviour:

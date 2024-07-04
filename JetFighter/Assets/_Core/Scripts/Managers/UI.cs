@@ -12,6 +12,8 @@ public class UI : Singleton<UI>
     
     public List<PlayerInfoUI> playerInfoUiList;
     public List<PlayerScoreUI> playerScoreUIList;
+
+    public IngameView ingameView;
     
     public async UniTask Init()
     {

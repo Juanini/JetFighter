@@ -4,4 +4,5 @@ using UnityEngine;
 public class PositionReferences : Singleton<PositionReferences>
 {
     public List<Transform> playersPositions;
+    public List<Transform> playersExitPositions;
 }

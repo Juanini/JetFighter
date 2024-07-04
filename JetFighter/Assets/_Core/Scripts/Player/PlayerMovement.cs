@@ -23,6 +23,11 @@ public class PlayerMovement : MonoBehaviour
         HandleMovement();
     }
 
+    public void SetMovingState(bool _state)
+    {
+        canMove = _state;
+    }
+
     void HandleMovement()
     {
         rb.velocity = transform.up * currentSpeed;

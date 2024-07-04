@@ -12,11 +12,14 @@ public class Player : MonoBehaviour
 
     public GameObject uiPos;
 
-    [Header("COMPONENTS")] [SerializeField]
-    private PlayerInput playerInput;
+    [Header("COMPONENTS")]
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private ScreenLooper screenLooper;
 
     [Header("EVENTS")] [SerializeField]
     private ScriptableEventPlayer onShipDestoyed;
+    private ScriptableEventPlayer onMatchStart;
 
     private float health;
     public float Health => health;
@@ -47,6 +50,12 @@ public class Player : MonoBehaviour
         activeWeapon.SetOwner(this);
     }
 
+    public void SetReadyForMatch()
+    {
+        playerMovement.SetMovingState(true);
+        SetScreenLooperActive(true);
+    }
+
     public Sprite GetShipSprite()
     {
         return shipSO.shipSprite;
@@ -75,6 +84,19 @@ public class Player : MonoBehaviour
             projectile.HandleHit();
             Damage();
         }
+    }
+    
+    // * =====================================================================================================================================
+    // * 
+
+    public void SetRotation(float _valuer)
+    {
+        transform.Rotate(new Vector3(0, 0, _valuer));
+    }
+
+    public void SetScreenLooperActive(bool _active)
+    {
+        screenLooper.enabled = _active;
     }
 
     // * =====================================================================================================================================

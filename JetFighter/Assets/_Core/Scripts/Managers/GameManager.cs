@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Obvious.Soap;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -10,6 +11,10 @@ public class GameManager : Singleton<GameManager>
     [Header("GAME MODE")] 
     private GameModeTypeSO currentModeSelected;
     [SerializeField] private ScriptableEventGameModeTypeSO onGameModeSelected;
+
+    [Header("EVENTS")] 
+    public ScriptableEventNoParam onRematch;
+    public ScriptableEventNoParam onMatchStart;
     
     private void Start()
     {
@@ -27,6 +32,16 @@ public class GameManager : Singleton<GameManager>
     public GameModeTypeSO GetGameModeActive()
     {
         return currentModeSelected;
+    }
+    
+    public void OnMatchStart()
+    {
+        onMatchStart.Raise();
+    }
+    
+    private void OnRematch()
+    {
+        TransitionToState(GameStates.CleanUp);
     }
     
     // * =====================================================================================================================================
@@ -51,11 +66,13 @@ public class GameManager : Singleton<GameManager>
     private void RegisterEvents()
     {
         onGameModeSelected.OnRaised += OnGameModeSelected;
+        onRematch.OnRaised += OnRematch;
     }
-    
+
     private void UnregisterEvents()
     {
         onGameModeSelected.OnRaised -= OnGameModeSelected;
+        onRematch.OnRaised -= OnRematch;
     }
 
     private void OnDestroy()

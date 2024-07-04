@@ -5,13 +5,9 @@ public class GameStateLevelSetup : StateBase<GameStates>
 {
     public override async UniTask EnterState()
     {
-        // Instantiate Ships acorting to GameMode info
+        await UI.ShowDialog<IngameView>();
         LevelManager.Ins.CreatePlayers();
-        
-        // Setup all elements on level
-
-        // Transition to Countdown State
-
+        GameManager.Ins.TransitionToState(GameStates.PregameStart);
     }
 
     public override async UniTask ExitState()

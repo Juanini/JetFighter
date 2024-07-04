@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField] private List<PlayerVariable> playersList;
+    public List<PlayerVariable> PlayersList => playersList;
 
     public ScriptableListPlayerInfoUI scriptableListPlayerInfoUI;
     
@@ -30,7 +31,8 @@ public class LevelManager : Singleton<LevelManager>
                 
             playersList[i].CleanUp();
             playersList[i].Value = player;
-            player.transform.position = PositionReferences.Ins.playersPositions[i].position;
+            player.SetScreenLooperActive(false);
+            player.transform.position = PositionReferences.Ins.playersExitPositions[i].position;
             
             scriptableListPlayerInfoUI[i].Init(playersList[i]);
         }
@@ -58,7 +60,18 @@ public class LevelManager : Singleton<LevelManager>
         
         return aliveCount == 1;
     }
-    
+
+    public Player GetPlayer1() => playersList[0].Value;
+    public Player GetPlayer2() => playersList[1].Value;
+
+    public void SetShipsReadyForMatch()
+    {
+        foreach (var playerVariable in playersList)
+        {
+            playerVariable.Value.SetReadyForMatch();
+        }
+    }
+
     // * =====================================================================================================================================
     // * EVENTS
 
