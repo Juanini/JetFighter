@@ -43,6 +43,11 @@ public class Player : MonoBehaviour
         SetHealthToMax();
         SetInitialWeapon();
     }
+
+    public void Shoot()
+    {
+        activeWeapon.TryShoot();
+    }
     
     private void SetHealthToMax()
     {
@@ -67,6 +72,8 @@ public class Player : MonoBehaviour
         
         playerMovement.SetMovingState(false);
         playerMovement.Stop();
+        
+        SetRotation(playerNumber == 0 ? 0 : -180);
         
         SetScreenLooperActive(false);
         SetHealthToMax();

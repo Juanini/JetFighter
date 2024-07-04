@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 766788591462688878}
   - component: {fileID: 3909596165016378179}
   - component: {fileID: 2215398371120438510}
+  - component: {fileID: 4737327124066684717}
   - component: {fileID: 5000845743328154044}
   - component: {fileID: 9061124164377223051}
   m_Layer: 0
@@ -119,6 +120,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6aa6693138f48bcb82da7362989a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4737327124066684717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255633289839915350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76bd196cc8b4f4dac83c5a685afac4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTarget: {fileID: 0}
+  detectionRange: 10
+  shootingRange: 8
+  dodgeChance: 0.3
+  boostChance: 0.1
+  dodgeCooldown: 5
+  boostCooldown: 10
 --- !u!50 &5000845743328154044
 Rigidbody2D:
   serializedVersion: 4
@@ -323,8 +343,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1626498363
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 64bfed3fd031c4dc38bb8cc6462734fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

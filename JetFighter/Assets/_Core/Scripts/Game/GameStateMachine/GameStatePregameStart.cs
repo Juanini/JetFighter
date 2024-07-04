@@ -8,7 +8,7 @@ public class GameStatePregameStart : StateBase<GameStates>
     
     public override async UniTask EnterState()
     {
-        await UniTask.Delay(500);
+        // await UniTask.Delay(500);
         
         LevelManager.Ins.GetPlayer2().SetRotation(-180);
         
