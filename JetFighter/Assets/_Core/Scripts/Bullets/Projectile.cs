@@ -25,8 +25,13 @@ public abstract class Projectile : MonoBehaviour
     {
         if (_other.CompareTag("Player"))
         {
-            
+           
         }
+    }
+
+    public void HandleHit()
+    {
+        gameObject.SetActive(false);
     }
 
     public abstract void Shoot(Transform _shootPos);

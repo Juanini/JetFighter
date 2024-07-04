@@ -15,5 +15,10 @@ public class PlayerVariable : ScriptableVariable<Player>
             Destroy(Value);
         }
     }
+
+    public bool IsDead()
+    {
+        return Value.Health <= 0;
+    }
 }
 

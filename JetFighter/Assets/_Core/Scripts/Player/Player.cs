@@ -15,7 +15,12 @@ public class Player : MonoBehaviour
     [Header("COMPONENTS")] [SerializeField]
     private PlayerInput playerInput;
 
+    [Header("EVENTS")] [SerializeField]
+    private ScriptableEventPlayer onShipDestoyed;
+
     private float health;
+    public float Health => health;
+
     private int playerNumber;
     public int PlayerNumber => playerNumber;
 
@@ -67,6 +72,7 @@ public class Player : MonoBehaviour
                 return;
             }
             
+            projectile.HandleHit();
             Damage();
         }
     }
@@ -76,6 +82,13 @@ public class Player : MonoBehaviour
     
     private void Damage()
     {
+        if (health <= 0) { return; }
+        
         health -= 10;
+
+        if (health <= 0)
+        {
+            onShipDestoyed.Raise(this);
+        }
     }
 }

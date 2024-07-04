@@ -53,6 +53,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Game
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa0eef15d41de4ce686eb4236a591add
+    m_Address: Assets/_Core/Prefabs/UI/Views/GameOverVIew.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Game
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b786c86d8a121478d8c65b54d7b82cc9, type: 2}
   m_SchemaSet:

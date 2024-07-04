@@ -5,7 +5,7 @@ public class GameStateGameOver : StateBase<GameStates>
 {
     public override async UniTask EnterState()
     {
-        
+        UI.ShowPopup<GameOverView>();
     }
 
     public override async UniTask ExitState()
