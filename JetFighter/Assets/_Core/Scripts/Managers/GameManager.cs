@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameEventSystem;
 using Obvious.Soap;
 using UnityEngine;
 
@@ -18,6 +19,11 @@ public class GameManager : Singleton<GameManager>
     public ScriptableEventNoParam onMatchStart;
     
     private void Start()
+    {
+        GameEventManager.StartListening(Bootstrap.ON_GAME_ASSETS_LOADED_EVENT_KEY, OnGameAssetsLoaded);
+    }
+
+    private void OnGameAssetsLoaded(Hashtable arg0)
     {
         Init();
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -20,7 +21,7 @@ public class LevelManager : Singleton<LevelManager>
         RegisterEvents();
     }
 
-    public void CreatePlayers()
+    public async UniTask CreatePlayers()
     {
         for (var i = 0; i < playersList.Count; i++)
         {
@@ -29,7 +30,9 @@ public class LevelManager : Singleton<LevelManager>
             var player = Instantiate(gameMode.playersTypesList[i].playerPrefab).GetComponent<Player>();
             var payerVariable = playersList[i];
             
-            player.Setup(i, playersList[i]);
+            player.Setup(i, 
+                payerVariable,
+                gameMode.shipSOList[i]);
                 
             payerVariable.CleanUp();
             payerVariable.Value = player;

@@ -20,6 +20,9 @@ public class EnemyAI : MonoBehaviour
     
     public void Init()
     {
+        playerTarget = LevelManager.Ins.GetPlayer1().transform;
+
+        player = GetComponent<Player>();
         playerMovement = GetComponent<PlayerMovement>();
         playerBoost = GetComponent<PlayerBoost>();
         cancellationTokenSource = new CancellationTokenSource();
@@ -35,14 +38,14 @@ public class EnemyAI : MonoBehaviour
             {
                 if (distanceToPlayer <= shootingRange)
                 {
-                    bool shouldDodge = Random.value < dodgeChance;
+                    // bool shouldDodge = Random.value < dodgeChance;
                     bool shouldBoost = Random.value < boostChance;
 
-                    if (shouldDodge)
-                    {
-                        Dodge().Forget();
-                        await UniTask.Delay((int)(dodgeCooldown * 1000), cancellationToken: token);
-                    }
+                    // if (shouldDodge)
+                    // {
+                    //     Dodge().Forget();
+                    //     await UniTask.Delay((int)(dodgeCooldown * 1000), cancellationToken: token);
+                    // }
 
                     if (shouldBoost)
                     {
@@ -52,18 +55,9 @@ public class EnemyAI : MonoBehaviour
 
                     player.Shoot();
                 }
-                else
-                {
-                    // attack.StopShooting();
-                }
-
-                FollowPlayer();
             }
-            else
-            {
-                // attack.StopShooting();
-                playerMovement.StopTurning();
-            }
+            
+            FollowPlayer();
 
             await UniTask.Yield();
         }

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TagIndex: 0
   Description: 
-  playerPrefab: {fileID: 255633289839915350, guid: d728edc7b66134d6d9cac68ec5ef0598, type: 3}
+  playerPrefab: {fileID: 3956498165510629303, guid: 790f4bc3ba6f74a8d9265ff4985c9765, type: 3}

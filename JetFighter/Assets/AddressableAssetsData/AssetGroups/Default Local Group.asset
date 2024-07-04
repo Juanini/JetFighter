@@ -65,6 +65,24 @@ MonoBehaviour:
     m_SerializedLabels:
     - Game
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78b164ac4c6764017b8b18f40160daa4
+    m_Address: Assets/_Core/Prefabs/Main/GameScripts.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Game
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3bfc2832494d44724a355f95da5a4e9e
+    m_Address: Assets/_Core/Prefabs/Main/GameScenario.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Game
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: edbcb7a20ce6b40c08f705275eea21f7
+    m_Address: Assets/_Core/Prefabs/Main/GameUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Game
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b786c86d8a121478d8c65b54d7b82cc9, type: 2}
   m_SchemaSet:

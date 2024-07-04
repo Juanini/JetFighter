@@ -7,6 +7,7 @@ public class GameModeTypeSO : ScriptableEnumBase
 {
     public Weapon startingWeapon;
     public List<PlayerTypeSO> playersTypesList;
+    public List<ShipSO> shipSOList;
 
     public int GetPlayersAmount()
     {

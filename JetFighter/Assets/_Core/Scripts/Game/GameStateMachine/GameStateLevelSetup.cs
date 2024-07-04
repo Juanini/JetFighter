@@ -6,7 +6,7 @@ public class GameStateLevelSetup : StateBase<GameStates>
     public override async UniTask EnterState()
     {
         await UI.ShowDialog<IngameView>();
-        LevelManager.Ins.CreatePlayers();
+        await LevelManager.Ins.CreatePlayers();
         GameManager.Ins.TransitionToState(GameStates.PregameStart);
     }
 

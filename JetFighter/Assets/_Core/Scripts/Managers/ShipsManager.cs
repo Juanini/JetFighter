@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipsManager : MonoBehaviour
+public class ShipsManager : Singleton<ShipsManager>
 {
     
 }

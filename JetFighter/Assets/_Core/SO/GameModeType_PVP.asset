@@ -18,3 +18,6 @@ MonoBehaviour:
   playersTypesList:
   - {fileID: 11400000, guid: f37ba8b3f09564382b3c643c5dc36c5f, type: 2}
   - {fileID: 11400000, guid: f37ba8b3f09564382b3c643c5dc36c5f, type: 2}
+  shipSOList:
+  - {fileID: 11400000, guid: 882d6bc8e3d784aaca18c18faf8c9eb2, type: 2}
+  - {fileID: 11400000, guid: c6f3c3ed674ef4e4195b67a57a86e98c, type: 2}

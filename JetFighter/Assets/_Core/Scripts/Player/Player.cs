@@ -12,11 +12,15 @@ public class Player : MonoBehaviour
 
     public GameObject uiPos;
 
+    [Header("ELEMENTS")] 
+    public SpriteRenderer playerSprite;
+    
     [Header("COMPONENTS")]
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private PlayerBoost playerBoost;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private ScreenLooper screenLooper;
+    [SerializeField] private EnemyAI enemyAI;
 
     [Header("EVENTS")] [SerializeField]
     private ScriptableEventPlayer onShipDestoyed;
@@ -41,12 +45,15 @@ public class Player : MonoBehaviour
         Init();
     }
 
-    public void Setup(int _playerNumber, PlayerVariable _playerVariable)
+    public void Setup(int _playerNumber, PlayerVariable _playerVariable, ShipSO _shipSo)
     {
+        shipSO = _shipSo;
         playerVariable = _playerVariable;
         
         playerNumber = _playerNumber;
         playerInput.Setup(this);
+
+        playerSprite.sprite = shipSO.shipSprite;
     }
 
     private void Init()
@@ -75,6 +82,8 @@ public class Player : MonoBehaviour
     {
         playerMovement.SetMovingState(true);
         SetScreenLooperActive(true);
+        
+        enemyAI?.Init();
     }
     
     public void PrepareForNextMatch()

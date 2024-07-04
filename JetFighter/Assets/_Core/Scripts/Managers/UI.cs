@@ -9,14 +9,14 @@ public class UI : Singleton<UI>
 {
     [SerializeField] private UIManager uiManager;
     [SerializeField] private UINavigation uiNavigation;
-    
-    public List<PlayerInfoUI> playerInfoUiList;
-    public List<PlayerScoreUI> playerScoreUIList;
 
+    public Canvas canvas;
+    
     public IngameView ingameView;
     
     public async UniTask Init()
     {
+        canvas.worldCamera = Camera.main;
         await uiManager.Init();
     }
     
