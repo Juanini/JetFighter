@@ -77,8 +77,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - Game
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: edbcb7a20ce6b40c08f705275eea21f7
-    m_Address: Assets/_Core/Prefabs/Main/GameUI.prefab
+  - m_GUID: 9ec68fd776dd5459aa271e53b3051f43
+    m_Address: Assets/_Core/Prefabs/Main/UI_Root.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Game
