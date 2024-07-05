@@ -52,7 +52,7 @@ public abstract class Weapon : MonoBehaviour
         return projectilePool.Get();
     }
 
-    protected void ReturnProjectileToPool(Projectile projectile)
+    public void ReturnProjectileToPool(Projectile projectile)
     {
         projectilePool.Release(projectile);
     }

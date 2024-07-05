@@ -9,16 +9,23 @@ public abstract class Projectile : MonoBehaviour
 {
     [SerializeField] private int timeToDisable;
     private int playerOwnerNumber;
+    private Weapon weaponOwner;
     
     private void OnEnable()
     {
         DisableAfterTime();
+    }
+
+    public void Init(Weapon _weaponOwner)
+    {
+        weaponOwner = _weaponOwner;
     }
     
     private async void DisableAfterTime()
     {
         await UniTask.Delay(timeToDisable);
         gameObject.SetActive(false);
+        weaponOwner.ReturnProjectileToPool(this);
     }
 
     public void HandleHit()
