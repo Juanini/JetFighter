@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
 
     public void SetReadyForMatch()
     {
+        playerInput.BlockInput(false);
         playerMovement.SetMovingState(true);
         SetScreenLooperActive(true);
         
@@ -89,6 +90,8 @@ public class Player : MonoBehaviour
     public void PrepareForNextMatch()
     {
         transform.position = PositionReferences.Ins.playersExitPositions[playerNumber].position;
+        
+        playerInput.BlockInput(true);
         
         playerBoost.Init();
         playerMovement.SetMovingState(false);
@@ -117,7 +120,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D _other)
     {
-        if (_other.CompareTag("Projectile"))
+        if (_other.CompareTag(GameDefs.TAG_PROJECTILE))
         {
             var projectile = _other.GetComponent<Projectile>();
             if (projectile.GetOwnerNumber() == playerNumber)
@@ -132,11 +135,6 @@ public class Player : MonoBehaviour
     
     // * =====================================================================================================================================
     // * 
-
-    public void SetAsWinner()
-    {
-        
-    }
     
     public void SetRotation(float _valuer)
     {

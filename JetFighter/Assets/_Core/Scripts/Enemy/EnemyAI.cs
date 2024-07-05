@@ -1,96 +1,94 @@
+using System;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class EnemyAI : MonoBehaviour
 {
     public Transform playerTarget;
-    public float detectionRange = 10f;
-    public float shootingRange = 8f;
-    public float dodgeChance = 0.3f; // 30% chance to dodge
-    public float boostChance = 0.1f; // 10% chance to boost
-    public float dodgeCooldown = 5f;
-    public float boostCooldown = 10f;
-
+    
     private Player player;
     private PlayerMovement playerMovement;
     private PlayerBoost playerBoost;
-    private CancellationTokenSource cancellationTokenSource;
+    
+    private bool isActive;
+    private BehaviorType behaviorType;
+
+    // * =====================================================================================================================================
+    // * MAIN
     
     public void Init()
     {
-        playerTarget = LevelManager.Ins.GetPlayer1().transform;
-
+        behaviorType = GetInitialBehavior();
+        
         player = GetComponent<Player>();
+        playerTarget = LevelManager.Ins.GetPlayer1().transform;
         playerMovement = GetComponent<PlayerMovement>();
-        playerBoost = GetComponent<PlayerBoost>();
-        cancellationTokenSource = new CancellationTokenSource();
-        StartAI(cancellationTokenSource.Token).Forget();
+        
+        isActive = true;
     }
-
-    private async UniTaskVoid StartAI(CancellationToken token)
+    
+    private void Update()
     {
-        while (!token.IsCancellationRequested)
+        if (!isActive) { return; }
+        
+        if (behaviorType == BehaviorType.Offencive)
         {
-            float distanceToPlayer = Vector2.Distance(transform.position, playerTarget.position);
-            if (distanceToPlayer <= detectionRange)
-            {
-                if (distanceToPlayer <= shootingRange)
-                {
-                    // bool shouldDodge = Random.value < dodgeChance;
-                    bool shouldBoost = Random.value < boostChance;
-
-                    // if (shouldDodge)
-                    // {
-                    //     Dodge().Forget();
-                    //     await UniTask.Delay((int)(dodgeCooldown * 1000), cancellationToken: token);
-                    // }
-
-                    if (shouldBoost)
-                    {
-                        playerBoost.PerformBoost().Forget();
-                        await UniTask.Delay((int)(boostCooldown * 1000), cancellationToken: token);
-                    }
-
-                    player.Shoot();
-                }
-            }
-            
+            player.Shoot();
             FollowPlayer();
-
-            await UniTask.Yield();
+        }
+        else if (behaviorType == BehaviorType.Defencive)
+        {
+            MoveAwayFromPlayer();
         }
     }
+    
+    // * =====================================================================================================================================
+    // * BEHAVIORS
+    
+    private BehaviorType GetInitialBehavior()
+    {
+        return Random.Range(0, 100) < 60 ? BehaviorType.Offencive : BehaviorType.Defencive;
+    }
+    
+    // * =====================================================================================================================================
+    // * MOVEMENT
 
     private void FollowPlayer()
     {
-        Vector2 direction = (playerTarget.position - transform.position).normalized;
-        float angle = Vector2.SignedAngle(transform.up, direction);
-
-        if (angle > 5f)
-        {
-            playerMovement.TurnRight();
-        }
-        else if (angle < -5f)
+        Vector3 directionToPlayer = playerTarget.position - transform.position;
+        float angleToPlayer = Vector3.SignedAngle(transform.up, directionToPlayer, Vector3.forward);
+        
+        if (angleToPlayer > 0)
         {
             playerMovement.TurnLeft();
         }
-        else
+        else if (angleToPlayer < 0)
         {
-            playerMovement.StopTurning();
+            playerMovement.TurnRight();
         }
     }
 
-    private async UniTaskVoid Dodge()
+    private void MoveAwayFromPlayer()
     {
-        Vector2 dodgeDirection = (Vector2)transform.right * (Random.value < 0.5f ? -1 : 1);
-        Vector2 dodgeTarget = (Vector2)transform.position + dodgeDirection * 2f; // Move 2 units left or right
-
-        while (Vector2.Distance(transform.position, dodgeTarget) > 0.1f)
+        Vector3 directionToPlayer = playerTarget.position - transform.position;
+        float angleToPlayer = Vector3.SignedAngle(transform.up, directionToPlayer, Vector3.forward);
+        
+        if (angleToPlayer > 0)
         {
-            transform.position = Vector2.MoveTowards(transform.position, dodgeTarget, playerMovement.movementConfig.forwardSpeed * Time.deltaTime);
-            await UniTask.Yield();
+            playerMovement.TurnRight();
         }
+        else if (angleToPlayer < 0)
+        {
+            playerMovement.TurnLeft();
+        }
+    }
+
+    public enum BehaviorType
+    {
+        Offencive = 0,
+        Defencive
     }
 }

@@ -29,7 +29,7 @@ public abstract class Weapon : MonoBehaviour
     private async void CanShootAgain()
     {
         canShoot = false;
-        await UniTask.Delay(fireRate);
+        await UniTask.Delay(fireRate * 1000);
         canShoot = true; 
     }
 

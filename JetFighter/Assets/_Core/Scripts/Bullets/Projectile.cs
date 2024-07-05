@@ -21,14 +21,6 @@ public abstract class Projectile : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D _other)
-    {
-        if (_other.CompareTag("Player"))
-        {
-           
-        }
-    }
-
     public void HandleHit()
     {
         gameObject.SetActive(false);

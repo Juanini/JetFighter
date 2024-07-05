@@ -11,7 +11,8 @@ public class PlayerInput : MonoBehaviour
 
     [SerializeField] private ControllerConfigSO controllerConfigSo;
     [SerializeField] private List<ControllerConfigSO> controllerConfigSoList;
-    
+
+    private bool blockInput;
     void Start()
     {
         player = GetComponent<Player>();
@@ -22,6 +23,8 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
+        if (blockInput) { return; }
+        
         HandleMovementInput();
         HandleBoostInput();
         HandleAttackInput();
@@ -63,5 +66,10 @@ public class PlayerInput : MonoBehaviour
     {
         player = _player;
         controllerConfigSo = controllerConfigSoList[player.PlayerNumber];
+    }
+
+    public void BlockInput(bool _block)
+    {
+        blockInput = _block;
     }
 }
