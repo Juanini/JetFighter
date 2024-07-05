@@ -28,6 +28,7 @@ public class EnemyAI : MonoBehaviour
         behaviorType = GetInitialBehavior();
         
         player = GetComponent<Player>();
+        playerBoost = GetComponent<PlayerBoost>();
         playerTarget = LevelManager.Ins.GetPlayer1().transform;
         playerMovement = GetComponent<PlayerMovement>();
         
@@ -154,6 +155,17 @@ public class EnemyAI : MonoBehaviour
         
         await UniTask.Delay(TimeSpan.FromSeconds(moveAwayTurnDuration));
         playerMovement.StopTurning();
+
+        TryToDoBoost();
+    }
+
+    private int boostChance = 50;
+    private void TryToDoBoost()
+    {
+        if (Random.Range(0, 100) < boostChance)
+        {
+            playerBoost.PerformBoost().Forget();
+        }
     }
     
     private async UniTaskVoid PerformDefensiveMovement(float duration)
