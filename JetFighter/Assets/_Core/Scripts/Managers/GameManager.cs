@@ -55,6 +55,14 @@ public class GameManager : Singleton<GameManager>
         TransitionToState(GameStates.CleanUp);
     }
     
+    private void OnMatchEnd()
+    {
+        foreach (var playerVariable in LevelManager.Ins.PlayersList)
+        {
+            playerVariable.Value.OnMatchEnd();
+        }
+    }
+    
     // * =====================================================================================================================================
     // * 
 
@@ -78,12 +86,14 @@ public class GameManager : Singleton<GameManager>
     {
         onGameModeSelected.OnRaised += OnGameModeSelected;
         onRematch.OnRaised += OnRematch;
+        onMatchEnd.OnRaised += OnMatchEnd;
     }
 
     private void UnregisterEvents()
     {
         onGameModeSelected.OnRaised -= OnGameModeSelected;
         onRematch.OnRaised -= OnRematch;
+        onMatchEnd.OnRaised -= OnMatchEnd;
     }
 
     private void OnDestroy()

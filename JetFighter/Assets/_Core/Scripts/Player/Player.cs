@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -147,7 +148,8 @@ public class Player : MonoBehaviour
 
     // * =====================================================================================================================================
     // * 
-    
+
+    private Tween shakeTween;
     private void Damage()
     {
         if (health <= 0) { return; }
@@ -158,5 +160,18 @@ public class Player : MonoBehaviour
         {
             onShipDestoyed.Raise(this);
         }
+
+        if (shakeTween.IsActive())
+        {
+            shakeTween.Kill();
+        }
+        
+        shakeTween = playerSprite.transform.DOShakePosition(0.15f, 0.15f, 50, 200);
+    }
+
+    public void OnMatchEnd()
+    {
+        playerMovement.SetMovingState(false);
+        playerMovement.Stop();
     }
 }

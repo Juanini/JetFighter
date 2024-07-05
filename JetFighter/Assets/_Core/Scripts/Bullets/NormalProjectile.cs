@@ -13,8 +13,6 @@ public class NormalProjectile : Projectile
 
     public override void Shoot(Transform _shootPos)
     {
-        Trace.Log("SHOOT");
-        
         transform.position = _shootPos.position;
         transform.rotation = _shootPos.rotation;
         
