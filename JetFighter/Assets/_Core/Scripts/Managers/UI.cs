@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using HannieEcho.UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UI : Singleton<UI>
 {

@@ -1,5 +1,4 @@
 using UnityEngine;
-using Obvious.Soap;
 
 
 [CreateAssetMenu(fileName = "PlayerMovementConfig", menuName = "ScriptableObjects/PlayerMovementConfig", order = 1)]

@@ -1,8 +1,4 @@
-using System;
 using UnityEngine;
-using Cysharp.Threading.Tasks;
-using System.Threading;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EnemyAI : MonoBehaviour

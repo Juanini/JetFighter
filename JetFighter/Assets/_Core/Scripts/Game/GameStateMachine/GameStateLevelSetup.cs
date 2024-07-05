@@ -1,4 +1,3 @@
-using UnityEngine;
 using Cysharp.Threading.Tasks;
 
 public class GameStateLevelSetup : StateBase<GameStates>

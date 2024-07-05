@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using HannieEcho.UI;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class HowToPlayView : UIView
