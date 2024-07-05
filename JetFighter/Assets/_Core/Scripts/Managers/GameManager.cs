@@ -40,10 +40,16 @@ public class GameManager : Singleton<GameManager>
     {
         return currentModeSelected;
     }
+
+    public StateBase<GameStates> GetCurrentGameState()
+    {
+        return gameStateMachine.GetCurrentState();
+    }
     
     public void OnMatchStart()
     {
         onMatchStart.Raise();
+        TransitionToState(GameStates.InGame);
     }
     
     private void OnRematch()

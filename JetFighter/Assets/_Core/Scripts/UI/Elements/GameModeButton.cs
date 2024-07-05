@@ -14,10 +14,9 @@ public class GameModeButton : MonoBehaviour
         button.onClick.AddListener(OnGameModeSelect);
     }
 
-    private void OnGameModeSelect()
+    private async void OnGameModeSelect()
     {
         onGameModeSelected.Raise(gameModeTypeSo);
-        UI.Ins.HideLastView();
-        GameManager.Ins.TransitionToState(GameStates.LevelSetup);
+        await UI.ShowDialog<HowToPlayView>();
     }
 }

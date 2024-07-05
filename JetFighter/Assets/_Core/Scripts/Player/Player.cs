@@ -101,6 +101,8 @@ public class Player : MonoBehaviour
         
         SetScreenLooperActive(false);
         SetHealthToMax();
+        
+        enemyAI?.SetActive(false);
     }
 
     public Sprite GetShipSprite()

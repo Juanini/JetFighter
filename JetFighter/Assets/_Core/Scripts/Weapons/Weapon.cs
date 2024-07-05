@@ -5,6 +5,7 @@ using UnityEngine.Pool;
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
+    [Tooltip("MILLISECODS")]
     [SerializeField] private int fireRate;
     private bool canShoot = true;
 
@@ -29,7 +30,7 @@ public abstract class Weapon : MonoBehaviour
     private async void CanShootAgain()
     {
         canShoot = false;
-        await UniTask.Delay(fireRate * 1000);
+        await UniTask.Delay(fireRate);
         canShoot = true; 
     }
 

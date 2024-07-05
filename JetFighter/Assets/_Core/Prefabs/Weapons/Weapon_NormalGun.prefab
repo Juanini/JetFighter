@@ -45,5 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5414705138119982385, guid: 9ac3256d4d6bb4657b1f5e65678161df, type: 3}
-  fireRate: 1
-  player: {fileID: 0}
+  fireRate: 500

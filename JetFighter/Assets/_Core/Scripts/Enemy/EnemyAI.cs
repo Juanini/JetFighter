@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
     private PlayerBoost playerBoost;
     
     private bool isActive;
+    
     private BehaviorType behaviorType;
 
     // * =====================================================================================================================================
@@ -43,6 +44,11 @@ public class EnemyAI : MonoBehaviour
         {
             MoveAwayFromPlayer();
         }
+    }
+
+    public void SetActive(bool _active)
+    {
+        isActive = false;
     }
     
     // * =====================================================================================================================================

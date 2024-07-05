@@ -23,6 +23,7 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Ins.GetCurrentGameState().StateKey != GameStates.InGame) { return; }
         if (blockInput) { return; }
         
         HandleMovementInput();

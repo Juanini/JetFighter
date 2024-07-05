@@ -21,3 +21,4 @@ MonoBehaviour:
   shipSOList:
   - {fileID: 11400000, guid: 882d6bc8e3d784aaca18c18faf8c9eb2, type: 2}
   - {fileID: 11400000, guid: c6f3c3ed674ef4e4195b67a57a86e98c, type: 2}
+  howToPlayImage: {fileID: 21300000, guid: 4b63e68f048534649a03a8620deba6a0, type: 3}
