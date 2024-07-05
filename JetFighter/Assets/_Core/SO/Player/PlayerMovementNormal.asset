@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b479eff21746efbd0e71345942abdc, type: 3}
   m_Name: PlayerMovementNormal
   m_EditorClassIdentifier: 
-  forwardSpeed: 5
+  forwardSpeed: 2
   turnSpeed: 100
   slowDownFactor: 0.7
   recoverySpeed: 1

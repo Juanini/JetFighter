@@ -29,13 +29,18 @@ public abstract class Weapon : MonoBehaviour
     private async void CanShootAgain()
     {
         canShoot = false;
-        await UniTask.Delay(fireRate);
+        await UniTask.Delay(fireRate * 1000);
         canShoot = true; 
     }
 
     public void SetOwner(Player _playerOwner)
     {
         player = _playerOwner;
+    }
+    
+    public int GetOwnerPlayerNumber()
+    {
+        return player.PlayerNumber;
     }
     
     // * =====================================================================================================================================

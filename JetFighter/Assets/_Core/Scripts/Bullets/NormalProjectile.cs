@@ -17,14 +17,13 @@ public class NormalProjectile : Projectile
 
     public override void Shoot(Transform _shootPos)
     {
+        Trace.Log("SHOOT");
+        
         transform.position = _shootPos.position;
         transform.rotation = _shootPos.rotation;
         
         if (rb != null)
         {
-            Debug.Log("Achis 2");
-            Debug.Log("_shootPos.forward * speed: " + _shootPos.forward * speed);
-            
             rb.velocity = _shootPos.up * speed;
         }
     }

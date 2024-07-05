@@ -9,20 +9,22 @@ public class PlayerInput : MonoBehaviour
     private PlayerMovement planeMovement;
     private PlayerBoost playerBoost;
 
+    [SerializeField] private ControllerConfigSO controllerConfigSo;
+    [SerializeField] private List<ControllerConfigSO> controllerConfigSoList;
+
+    private bool blockInput;
     void Start()
     {
         player = GetComponent<Player>();
         
         planeMovement = GetComponent<PlayerMovement>();
         playerBoost = GetComponent<PlayerBoost>();
-
-        turnLeftKey = KeyCode.LeftArrow;
     }
-
-    private KeyCode turnLeftKey;
 
     void Update()
     {
+        if (blockInput) { return; }
+        
         HandleMovementInput();
         HandleBoostInput();
         HandleAttackInput();
@@ -30,11 +32,11 @@ public class PlayerInput : MonoBehaviour
 
     void HandleMovementInput()
     {
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        if (Input.GetKey(controllerConfigSo.left))
         {
             planeMovement.TurnLeft();
         }
-        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(controllerConfigSo.right))
         {
             planeMovement.TurnRight();
         }
@@ -46,7 +48,7 @@ public class PlayerInput : MonoBehaviour
 
     void HandleBoostInput()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(controllerConfigSo.boost))
         {
             playerBoost.PerformBoost().Forget();
         }
@@ -54,13 +56,20 @@ public class PlayerInput : MonoBehaviour
 
     void HandleAttackInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(controllerConfigSo.shoot))
         {
             player.activeWeapon.TryShoot();
         }
-        // else if (Input.GetKeyUp(KeyCode.Space))
-        // {
-        //     
-        // }
+    }
+
+    public void Setup(Player _player)
+    {
+        player = _player;
+        controllerConfigSo = controllerConfigSoList[player.PlayerNumber];
+    }
+
+    public void BlockInput(bool _block)
+    {
+        blockInput = _block;
     }
 }

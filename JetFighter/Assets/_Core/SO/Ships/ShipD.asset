@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be3ca25f2cc644fabecdd7009849e003, type: 3}
+  m_Name: ShipD
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  movementConfig: {fileID: 11400000, guid: 598747b2142d44785bb21e1efd441452, type: 2}
+  shipPrefab: {fileID: 255633289839915350, guid: d728edc7b66134d6d9cac68ec5ef0598, type: 3}
+  shipSprite: {fileID: 21300000, guid: 5d3ce18523db946dd8d0c3dfec7f3a59, type: 3}
