@@ -59,7 +59,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void StopTurning()
     {
-        // currentSpeed = Mathf.Lerp(currentSpeed, movementConfig.forwardSpeed, Time.deltaTime * movementConfig.recoverySpeed);
-        currentSpeed = GetCurrentSpeed();
+        currentSpeed = Mathf.Lerp(GetCurrentSpeed(), movementConfig.forwardSpeed, Time.deltaTime * movementConfig.recoverySpeed);
     }
 }

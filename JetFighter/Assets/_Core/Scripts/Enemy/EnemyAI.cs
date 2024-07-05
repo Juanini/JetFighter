@@ -1,3 +1,5 @@
+using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,7 +14,12 @@ public class EnemyAI : MonoBehaviour
     private bool isActive;
     
     private BehaviorType behaviorType;
-
+    
+    private float behaviorChangeCheckTime = 1.5f;
+    public int offenciveBehaviorPercentChance = 40;
+    public int healthToChangeToDefencive = 30;
+    public int shootChance = 10;
+    
     // * =====================================================================================================================================
     // * MAIN
     
@@ -24,7 +31,31 @@ public class EnemyAI : MonoBehaviour
         playerTarget = LevelManager.Ins.GetPlayer1().transform;
         playerMovement = GetComponent<PlayerMovement>();
         
-        isActive = true;
+        SetActive(true);
+    }
+
+    private void CheckBehaviorChangeOverTime()
+    {
+        CheckBehavior();
+        if (behaviorType == BehaviorType.Defencive)
+        {
+            PerformDefensiveMovement(moveAwayTurnDuration).Forget();
+        }
+    }
+
+    private void CheckBehavior()
+    {
+        if (player.GetCurrentHealth() < healthToChangeToDefencive)
+        {
+            behaviorType = BehaviorType.Defencive;
+            return;
+        }
+        
+        if (Random.Range(0, 100) < 30)
+        {
+            behaviorType = GetRandomBehavior();
+            return;
+        }
     }
     
     private void Update()
@@ -33,18 +64,45 @@ public class EnemyAI : MonoBehaviour
         
         if (behaviorType == BehaviorType.Offencive)
         {
-            player.Shoot();
+            TryToShoot();
             FollowPlayer();
         }
-        else if (behaviorType == BehaviorType.Defencive)
+    }
+
+    private bool canShoot = true;
+    
+    private void TryToShoot()
+    {
+        if (!canShoot) { return; }
+        canShoot = false;
+        
+        ResetShoot().Forget();
+        
+        if (Random.Range(0, 100) < shootChance)
         {
-            MoveAwayFromPlayer();
+            player.Shoot();
         }
+    }
+
+    private async UniTask ResetShoot()
+    {
+        await UniTask.Delay(500);
+        canShoot = true;
     }
 
     public void SetActive(bool _active)
     {
-        isActive = false;
+        isActive = _active;
+        canShoot = isActive;
+
+        if (isActive)
+        {
+            InvokeRepeating(nameof(CheckBehaviorChangeOverTime), 0, behaviorChangeCheckTime);
+        }
+        else
+        {
+            CancelInvoke(nameof(CheckBehaviorChangeOverTime));
+        }
     }
     
     // * =====================================================================================================================================
@@ -52,7 +110,12 @@ public class EnemyAI : MonoBehaviour
     
     private BehaviorType GetInitialBehavior()
     {
-        return Random.Range(0, 100) < 60 ? BehaviorType.Offencive : BehaviorType.Defencive;
+        return GetRandomBehavior();
+    }
+
+    private BehaviorType GetRandomBehavior()
+    {
+        return Random.Range(0, 100) < offenciveBehaviorPercentChance ? BehaviorType.Offencive : BehaviorType.Defencive;
     }
     
     // * =====================================================================================================================================
@@ -62,7 +125,7 @@ public class EnemyAI : MonoBehaviour
     {
         Vector3 directionToPlayer = playerTarget.position - transform.position;
         float angleToPlayer = Vector3.SignedAngle(transform.up, directionToPlayer, Vector3.forward);
-        
+
         if (angleToPlayer > 0)
         {
             playerMovement.TurnLeft();
@@ -72,8 +135,10 @@ public class EnemyAI : MonoBehaviour
             playerMovement.TurnRight();
         }
     }
-
-    private void MoveAwayFromPlayer()
+    
+    public float moveAwayTurnDuration = 0.5f;
+    
+    private async void MoveAwayFromPlayer()
     {
         Vector3 directionToPlayer = playerTarget.position - transform.position;
         float angleToPlayer = Vector3.SignedAngle(transform.up, directionToPlayer, Vector3.forward);
@@ -86,6 +151,21 @@ public class EnemyAI : MonoBehaviour
         {
             playerMovement.TurnLeft();
         }
+        
+        await UniTask.Delay(TimeSpan.FromSeconds(moveAwayTurnDuration));
+        playerMovement.StopTurning();
+    }
+    
+    private async UniTaskVoid PerformDefensiveMovement(float duration)
+    {
+        float endTime = Time.time + duration;
+        while (Time.time < endTime)
+        {
+            MoveAwayFromPlayer();
+            await UniTask.Yield(); 
+        }
+        
+        playerMovement.StopTurning();
     }
 
     public enum BehaviorType
